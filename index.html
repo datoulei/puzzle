@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>拼图游戏</title>
+    <link rel="stylesheet" href="reset.css" type="text/css" />
+    <link rel="stylesheet" href="puzzle.css" type="text/css" />
+
+  </head>
+  <body>
+    <img id="puzzle" src="images/p-1.jpg" alt="" />
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="puzzle.js"></script>
+    <script type="text/javascript">
+      var puzzle = $('#puzzle').puzzle({
+        // row: 4,
+        // col: 4
+        // onFinish: function () {
+        //   alert(this.costTime);
+        // }
+      });
+    </script>
+  </body>
+</html>
