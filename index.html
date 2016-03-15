@@ -5,14 +5,22 @@
     <title>拼图游戏</title>
     <link rel="stylesheet" href="reset.css" type="text/css" />
     <link rel="stylesheet" href="puzzle.css" type="text/css" />
-
+    <style media="screen">
+      #puzzle{
+        width: 300px;
+        height: 300px;
+      }
+    </style>
   </head>
   <body>
-    <img id="puzzle" src="images/p-1.jpg" alt="" />
+    <div id="puzzle"></div>
     <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="puzzle.js"></script>
     <script type="text/javascript">
       var puzzle = $('#puzzle').puzzle({
+        src: 'http://img1.timeface.cn/story/d34d2db8e582627831d0776d56f30eb1.jpg',
+        width: 500,
+        height: 500
         // row: 4,
         // col: 4
         // onFinish: function () {

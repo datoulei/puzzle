@@ -18,23 +18,14 @@
 
     // 初始化拼图
     function init(options) {
-      console.log(options);
-      this.hide();
-      var imgSrc;
+      var imgSrc = options.src;
       // 判断是否为img
-      if(this != null && this.is('img') && this.attr('src') != null){
-        imgSrc = this.attr('src');
-      }else {
-        console.error('请确保使用IMG元素并且设置了src');
-        return;
-      }
-      // 检查容器是否存在
-      if($('#puzzleGame').length > 0){
-        console.error('puzzleGame is already exist! ');
+      if(!imgSrc){
+        console.error('请确保设置了src');
         return;
       }
       // 创建容器
-      var $container = $('<div/>').addClass('container').attr('id', 'puzzleGame')
+      var $container = this.addClass('container')
       .css({
         width: options.width + 6,
         height: options.height + 6
@@ -71,7 +62,7 @@
           index += 1;
         }
       }
-      $container.appendTo('body');
+      // $container.appendTo('body');
     }
     // 开始游戏
     _.startGame = function() {
