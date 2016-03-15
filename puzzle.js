@@ -61,6 +61,7 @@
           .css({
             'background-image': 'url("' + imgSrc + '")',
             'background-position': (-1 * chipWidth * colIndex) + 'px ' + (-1 * chipHeight * rowIndex) + 'px',
+            'background-size': (options.width + 6) + 'px ' + (options.height + 6) + 'px',
             width: chipWidth,
             height: chipHeight
           })

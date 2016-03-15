@@ -2,6 +2,7 @@
   position: relative;
 }
 .chip{
+  background-repeat: no-repeat;
   position: absolute;
   border: 1px solid #FFF;
   transition: all 0.30s ease-in-out;
