@@ -28,8 +28,13 @@
         console.error('请确保使用IMG元素并且设置了src');
         return;
       }
+      // 检查容器是否存在
+      if($('#puzzleGame').length > 0){
+        console.error('puzzleGame is already exist! ');
+        return;
+      }
       // 创建容器
-      var $container = $('<div/>').addClass('container')
+      var $container = $('<div/>').addClass('container').attr('id', 'puzzleGame')
       .css({
         width: options.width + 6,
         height: options.height + 6
@@ -80,6 +85,13 @@
       }
       this._startTime = Date.now();
       _.stepCount = 0;
+    }
+    // 结束游戏
+    _.stopGame = function () {
+      for (var i = 0, len = _.chipArray.length; i < len; i++){
+        var $chip = $('#chip_' + i);
+        $chip.off('click', selectChip);
+      }
     }
     // 选中拼图碎片
     function selectChip() {
