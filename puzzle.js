@@ -8,7 +8,10 @@
       col: 3,
       onFinish: function(){
         alert('恭喜完成！耗时：' + (this.costTime * 0.001).toFixed(2) + '秒,共计' + this.stepCount + '步');
-      }
+      },
+      onStart: function() {},
+      onStop: function() {},
+      onReset: function() {}
     };
 
     _.chipArray = [];
@@ -64,6 +67,19 @@
       }
       // $container.appendTo('body');
     }
+    // 重置游戏(暂时只支持重置图片)
+    _.reset = function(options) {
+      var imgSrc = (options && options.src) || this.extendOption.src;
+      for (var i = 0, len = this.chipArray.length; i < len; i++){
+        var $chip = $('#chip_' + i);
+        $chip.css(this.positionArray[i]);
+        $chip.css({
+          'background-image': 'url("' + imgSrc + '")'
+        });
+        $chip.attr('order', i);
+      }
+      _.extendOption.onReset.call(_);
+    }
     // 开始游戏
     _.startGame = function() {
       this.chipArray.sort(function () {
@@ -77,6 +93,7 @@
       }
       this._startTime = Date.now();
       _.stepCount = 0;
+      _.extendOption.onStart.call(_);
     }
     // 结束游戏
     _.stopGame = function () {
@@ -84,6 +101,7 @@
         var $chip = $('#chip_' + i);
         $chip.off('click', selectChip);
       }
+      _.extendOption.onStop.call(_);
     }
     // 选中拼图碎片
     function selectChip() {
@@ -131,9 +149,6 @@
       height: this.height()
     }, options);
     init.call(_.$this, _.extendOption);
-    setTimeout(function () {
-      _.startGame();
-    }, 500);
     return _;
   };
 })(jQuery);
