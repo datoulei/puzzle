@@ -82,9 +82,14 @@
     }
     // 开始游戏
     _.startGame = function() {
-      this.chipArray.sort(function () {
-        return 0.5 - Math.random();
-      });
+      // 数组乱序算法
+      if (!Array.prototype.shuffle) {
+        Array.prototype.shuffle = function() {
+            for(var j, x, i = this.length; i; j = parseInt(Math.random() * i), x = this[--i], this[i] = this[j], this[j] = x);
+            return this;
+        };
+      }
+      this.chipArray.shuffle();
       for (var i = 0, len = this.chipArray.length; i < len; i++){
         var $chip = $('#chip_' + this.chipArray[i]);
         $chip.on('click', selectChip)
